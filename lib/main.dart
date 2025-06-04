@@ -1,4 +1,5 @@
 import 'package:app_finance/src/ui/widgets/button.dart';
+import 'package:app_finance/src/ui/widgets/combobox.dart';
 import 'package:app_finance/src/ui/widgets/edit.dart';
 import 'package:app_finance/src/ui/widgets/title.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 50),
             EGEdit(
               controller: controller,
+              title: 'Login',
               hintText: 'Email',
               pathIcon: 'assets/icons/edit/email.svg',
+            ),
+            SizedBox(height: 50),
+            EGCombobox(
+              array: {1: 'Option 1', 2: 'Option 2', 3: 'Option 3'},
+              title: 'Login',
+              hintText: 'Email',
+              pathIcon: 'assets/icons/edit/arrow-combobox.svg',
             ),
             SizedBox(height: 50),
             EGButton(
@@ -55,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
               function: () {
                 print('Nome escrito: ${controller.text}');
               },
-              pathIcon: 'assets/icons/edit/email.svg',
             ),
           ],
         ),

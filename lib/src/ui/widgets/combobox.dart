@@ -3,25 +3,27 @@ import 'package:app_finance/src/ui/theme/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class EGEdit extends StatefulWidget {
-  const EGEdit({
+class EGCombobox extends StatefulWidget {
+  const EGCombobox({
     super.key,
-    required this.controller,
+    required this.array,
     required this.title,
     required this.hintText,
     this.pathIcon = '',
   });
 
-  final TextEditingController controller;
+  final Map<int, String> array;
   final String title;
   final String hintText;
   final String pathIcon;
 
   @override
-  State<EGEdit> createState() => _EGEditState();
+  State<EGCombobox> createState() => _EGComboboxState();
 }
 
-class _EGEditState extends State<EGEdit> {
+class _EGComboboxState extends State<EGCombobox> {
+  int? selectedValue;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -33,9 +35,11 @@ class _EGEditState extends State<EGEdit> {
         children: [
           Text(widget.title, style: AppFonts.textTitleEdit),
           SizedBox(
-            height: 56,
-            child: TextFormField(
-              controller: widget.controller,
+            height: 59,
+            child: DropdownButtonFormField<int>(
+              value: selectedValue,
+              isExpanded: true,
+              icon: SizedBox.shrink(), // Hide the default dropdown icon
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
@@ -43,13 +47,18 @@ class _EGEditState extends State<EGEdit> {
                 ),
                 suffixIcon:
                     widget.pathIcon.isNotEmpty
-                        ? Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: SvgPicture.asset(
-                            widget.pathIcon,
-                            width: 20,
-                            height: 15,
-                            fit: BoxFit.scaleDown,
+                        ? GestureDetector(
+                          onTap: () {
+                            print('Teste de clique no ícone do combobox');
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: SvgPicture.asset(
+                              widget.pathIcon,
+                              width: 20,
+                              height: 15,
+                              fit: BoxFit.scaleDown,
+                            ),
                           ),
                         )
                         : null,
@@ -71,6 +80,23 @@ class _EGEditState extends State<EGEdit> {
                   ),
                 ),
               ),
+              items:
+                  widget.array.entries
+                      .map(
+                        (entry) => DropdownMenuItem<int>(
+                          value: entry.key,
+                          child: Text(
+                            entry.value,
+                            style: AppFonts.textTitleEdit,
+                          ),
+                        ),
+                      )
+                      .toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedValue = value;
+                });
+              },
             ),
           ),
         ],

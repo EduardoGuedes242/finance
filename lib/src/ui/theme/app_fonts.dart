@@ -20,8 +20,15 @@ class AppFonts {
 
   static const TextStyle textHint = TextStyle(
     fontFamily: primaryFont,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.w500,
-    color: AppColors.primary03,
+    color: AppColors.primary06,
+  );
+
+  static const TextStyle textTitleEdit = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primary09,
   );
 }
