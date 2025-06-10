@@ -18,6 +18,13 @@ class AppFonts {
     color: AppColors.primary09,
   );
 
+  static const TextStyle textStandart = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.secondary04,
+  );
+
   static const TextStyle textHint = TextStyle(
     fontFamily: primaryFont,
     fontSize: 16,

@@ -1,3 +1,4 @@
+import 'package:app_finance/src/pages/initial/initial.dart';
 import 'package:app_finance/src/ui/widgets/button.dart';
 import 'package:app_finance/src/ui/widgets/combobox.dart';
 import 'package:app_finance/src/ui/widgets/edit.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const InitialPage(),
     );
   }
 }
@@ -44,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             EGTitle(text: 'Take Control of Your Finances'),
+
             SizedBox(height: 50),
             EGEdit(
               controller: controller,
