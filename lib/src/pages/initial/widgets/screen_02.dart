@@ -1,5 +1,4 @@
 import 'package:app_finance/src/ui/theme/app_fonts.dart';
-import 'package:app_finance/src/ui/widgets/title.dart';
 import 'package:flutter/material.dart';
 
 class ScreenInitial02 extends StatelessWidget {
@@ -11,11 +10,16 @@ class ScreenInitial02 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          EGTitle(text: 'Screen Initial 02'),
-          const SizedBox(height: 20),
+          Image.asset(
+            'assets/images/initial/financial-planning.png',
+            width: 300,
+            height: 300,
+          ),
+          const SizedBox(height: 5),
+          Text('Simplify Your Budgeting', style: AppFonts.textTitle),
+          const SizedBox(height: 10),
           Text(
-            'Welcome to the initial screen of the app! Here you can find '
-            'information about how to use the app and its features.',
+            'Say goodbye to complex spreadsheets and confusing calculations.',
             style: AppFonts.textStandart,
             textAlign: TextAlign.center,
           ),

@@ -13,15 +13,15 @@ class AppFonts {
 
   static const TextStyle textTitle = TextStyle(
     fontFamily: primaryFont,
-    fontSize: 24,
-    fontWeight: FontWeight.w700,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
     color: AppColors.primary09,
   );
 
   static const TextStyle textStandart = TextStyle(
     fontFamily: primaryFont,
     fontSize: 14,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
     color: AppColors.secondary04,
   );
 
