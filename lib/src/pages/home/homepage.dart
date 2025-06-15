@@ -1,6 +1,10 @@
-import 'package:app_finance/src/ui/theme/app_colors.dart' as my_colors;
-import 'package:elegant_nav_bar/elegant_nav_bar.dart';
+import 'package:app_finance/src/pages/home/screens/home.dart';
+import 'package:app_finance/src/pages/initial/widgets/screen_02.dart';
+import 'package:app_finance/src/pages/initial/widgets/screen_03.dart';
+import 'package:app_finance/src/ui/theme/app_colors.dart';
+import 'package:app_finance/src/ui/theme/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -11,48 +15,100 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   int _currentIndex = 0;
+
+  final telas = [ScreenHome(), ScreenInitial02(), ScreenInitial03()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: my_colors.AppColors.highlight001,
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      backgroundColor: AppColors.highlight001,
+      body: Center(child: telas[_currentIndex]),
+      bottomNavigationBar: BottomAppBar(
+        color: AppColors.primary09,
+        height: 80,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Spacer(),
-            Text(
-              'Welcome to the Home Page',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: my_colors.AppColors.primary09,
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _currentIndex = 0;
+                });
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/navbar/home.svg',
+                    color:
+                        _currentIndex == 0
+                            ? AppColors.highlight001
+                            : AppColors.primary04,
+                  ),
+                  Text(
+                    'Home',
+                    style:
+                        _currentIndex == 0
+                            ? AppFonts.textIconSelect
+                            : AppFonts.textIcon,
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _currentIndex = 1;
+                });
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/navbar/chart.svg',
+                    color:
+                        _currentIndex == 1
+                            ? AppColors.highlight001
+                            : AppColors.primary04,
+                  ),
+                  Text(
+                    'Graficos',
+                    style:
+                        _currentIndex == 1
+                            ? AppFonts.textIconSelect
+                            : AppFonts.textIcon,
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _currentIndex = 2;
+                });
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/navbar/wallet.svg',
+                    color:
+                        _currentIndex == 2
+                            ? AppColors.highlight001
+                            : AppColors.primary04,
+                  ),
+                  Text(
+                    'Carteria',
+                    style:
+                        _currentIndex == 2
+                            ? AppFonts.textIconSelect
+                            : AppFonts.textIcon,
+                  ),
+                ],
               ),
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: ElegantBottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          NavigationItem(label: 'Home', iconWidget: Icon(Icons.home)),
-          NavigationItem(label: 'Search', iconWidget: Icon(Icons.search)),
-          NavigationItem(label: 'Profile', iconWidget: Icon(Icons.person)),
-          NavigationItem(label: 'Settings', iconWidget: Icon(Icons.settings)),
-        ],
-        // Optional: Customize indicator
-        indicatorPosition: IndicatorPosition.bottom,
-        indicatorShape: IndicatorShape.dot,
-
-        // Optional: Enable floating mode
-        isFloating: true,
-        floatingMargin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        floatingBorderRadius: 24.0,
       ),
     );
   }

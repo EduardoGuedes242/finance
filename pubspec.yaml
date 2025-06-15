@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.1.0
   elegant_nav_bar: ^0.0.22
+  salomon_bottom_bar: ^3.3.2
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +61,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    #icons
     - assets/icons/edit/
+    - assets/icons/navbar/
+    #images
     - assets/images/initial/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -38,4 +38,18 @@ class AppFonts {
     fontWeight: FontWeight.w600,
     color: AppColors.primary09,
   );
+
+  static const TextStyle textIconSelect = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    color: AppColors.highlight001,
+  );
+
+  static const TextStyle textIcon = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primary04,
+  );
 }
