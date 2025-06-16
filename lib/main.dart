@@ -1,3 +1,4 @@
+import 'package:app_finance/src/pages/home/screens/add_expanse/categorie.dart';
 import 'package:app_finance/src/pages/initial/initial.dart';
 import 'package:app_finance/src/ui/widgets/button.dart';
 import 'package:app_finance/src/ui/widgets/combobox.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const InitialPage(),
+      //home: const InitialPage(),
+      home: const SelectCategorieScreen(),
     );
   }
 }

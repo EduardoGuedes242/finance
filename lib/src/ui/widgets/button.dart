@@ -45,7 +45,7 @@ class _EGButtonState extends State<EGButton> {
                 )
                 : SizedBox(),
 
-            Text('Continue', style: AppFonts.textButton),
+            Text(widget.title, style: AppFonts.textButton),
           ],
         ),
       ),

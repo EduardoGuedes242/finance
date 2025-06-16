@@ -18,6 +18,20 @@ class AppFonts {
     color: AppColors.primary09,
   );
 
+  static const TextStyle textSubTitle = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+    color: AppColors.primary06,
+  );
+
+  static const TextStyle textSubTitle16 = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    color: AppColors.primary06,
+  );
+
   static const TextStyle textStandart = TextStyle(
     fontFamily: primaryFont,
     fontSize: 14,
