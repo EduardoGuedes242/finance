@@ -1,7 +1,7 @@
+import 'package:app_finance/src/pages/home/screens/add_expanse/expansse.dart';
 import 'package:app_finance/src/ui/theme/app_colors.dart';
 import 'package:app_finance/src/ui/theme/app_fonts.dart';
 import 'package:app_finance/src/ui/widgets/app_bar_back.dart';
-import 'package:app_finance/src/ui/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class SelectCategorieScreen extends StatefulWidget {
@@ -15,96 +15,185 @@ class SelectCategorieScreenState extends State<SelectCategorieScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 40),
-            EGAppbarBack(title: 'Categorias'),
-            SizedBox(height: 20),
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Needs', style: AppFonts.textSubTitle16),
-                    SizedBox(height: 5),
-                    Divider(color: AppColors.primary06, height: 1),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CategorieItem(),
-                        CategorieItem(),
-                        CategorieItem(),
-                        CategorieItem(),
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                  ],
-                ),
+      body: ListView(
+        children: [
+          SizedBox(height: 40),
+          EGAppbarBack(title: 'Categorias'),
+          SizedBox(height: 20),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Wants', style: AppFonts.textSubTitle16),
+                  SizedBox(height: 5),
+                  Divider(color: AppColors.primary06, height: 1),
+                  SizedBox(height: 15),
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 0,
+                    children: [
+                      CategorieItem(
+                        description: 'Lazer',
+                        icon: Icons.local_activity,
+                        idCategorie: 1,
+                      ),
+                      CategorieItem(
+                        description: 'Compras',
+                        icon: Icons.shopping_cart,
+                        idCategorie: 2,
+                      ),
+                      CategorieItem(
+                        description: 'Viagens',
+                        icon: Icons.airplanemode_active,
+                        idCategorie: 3,
+                      ),
+                      CategorieItem(
+                        description: 'Presentes',
+                        icon: Icons.card_giftcard,
+                        idCategorie: 4,
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Needs', style: AppFonts.textSubTitle16),
-                    SizedBox(height: 5),
-                    Divider(color: AppColors.primary06, height: 1),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CategorieItem(),
-                        CategorieItem(),
-                        CategorieItem(),
-                        CategorieItem(),
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                  ],
-                ),
-              ),
-            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Wants', style: AppFonts.textSubTitle16),
+                  SizedBox(height: 5),
+                  Divider(color: AppColors.primary06, height: 1),
+                  SizedBox(height: 15),
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 3,
 
-            Spacer(),
-            EGButton(title: 'Continuar', function: () {}),
-            SizedBox(height: 50),
-          ],
-        ),
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 0,
+                    children: [
+                      CategorieItem(
+                        description: 'Lazer',
+                        icon: Icons.local_activity,
+                        idCategorie: 1,
+                      ),
+                      CategorieItem(
+                        description: 'Compras',
+                        icon: Icons.shopping_cart,
+                        idCategorie: 2,
+                      ),
+                      CategorieItem(
+                        description: 'Viagens',
+                        icon: Icons.airplanemode_active,
+                        idCategorie: 3,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Wants', style: AppFonts.textSubTitle16),
+                  SizedBox(height: 5),
+                  Divider(color: AppColors.primary06, height: 1),
+                  SizedBox(height: 15),
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 3,
+
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 0,
+                    children: [
+                      CategorieItem(
+                        description: 'Lazer',
+                        icon: Icons.local_activity,
+                        idCategorie: 1,
+                      ),
+                      CategorieItem(
+                        description: 'Compras',
+                        icon: Icons.shopping_cart,
+                        idCategorie: 2,
+                      ),
+                      CategorieItem(
+                        description: 'Viagens',
+                        icon: Icons.airplanemode_active,
+                        idCategorie: 3,
+                      ),
+                      CategorieItem(
+                        description: 'Presentes',
+                        icon: Icons.card_giftcard,
+                        idCategorie: 4,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
 class CategorieItem extends StatelessWidget {
-  const CategorieItem({super.key});
+  const CategorieItem({
+    super.key,
+    required this.description,
+    required this.icon,
+    required this.idCategorie,
+  });
+  final String description;
+  final IconData icon;
+  final int idCategorie;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            color: AppColors.primary01,
-            borderRadius: BorderRadius.circular(25),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return ExpansseScreen(categoryDescription: description);
+            },
           ),
-          child: Icon(Icons.shopping_cart_outlined, color: AppColors.primary06),
-        ),
-        SizedBox(height: 5),
-        Text(
-          'Compras',
-          style: AppFonts.textSubTitle16.copyWith(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
+        );
+      },
+      child: Column(
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: AppColors.primary01,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Icon(icon, color: AppColors.primary06),
           ),
-        ),
-      ],
+          SizedBox(height: 5),
+          Text(
+            description,
+            style: AppFonts.textSubTitle16.copyWith(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
