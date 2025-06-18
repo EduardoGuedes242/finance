@@ -9,7 +9,7 @@ class EGCombobox extends StatefulWidget {
     required this.array,
     required this.title,
     required this.hintText,
-    this.pathIcon = '',
+    this.pathIcon = 'assets/icons/edit/arrow-combobox.svg',
   });
 
   final Map<int, String> array;
