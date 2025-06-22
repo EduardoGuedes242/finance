@@ -37,6 +37,8 @@ dependencies:
   flutter_svg: ^2.1.0
   elegant_nav_bar: ^0.0.22
   salomon_bottom_bar: ^3.3.2
+  dio: ^5.8.0+1
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
