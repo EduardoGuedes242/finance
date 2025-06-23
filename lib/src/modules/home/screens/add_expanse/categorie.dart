@@ -39,104 +39,22 @@ class SelectCategorieScreenState extends State<SelectCategorieScreen> {
                       CategorieItem(
                         description: 'Lazer',
                         icon: Icons.local_activity,
-                        idCategorie: 1,
+                        idCategorie: 'e3c16d8e-5d4a-4b88-8c7d-9a1e3a6c12f4',
                       ),
                       CategorieItem(
                         description: 'Compras',
                         icon: Icons.shopping_cart,
-                        idCategorie: 2,
+                        idCategorie: 'e3c16d8e-5d4a-4b88-8c7d-9a1e3a6c12f4',
                       ),
                       CategorieItem(
                         description: 'Viagens',
                         icon: Icons.airplanemode_active,
-                        idCategorie: 3,
+                        idCategorie: 'e3c16d8e-5d4a-4b88-8c7d-9a1e3a6c12f4',
                       ),
                       CategorieItem(
                         description: 'Presentes',
                         icon: Icons.card_giftcard,
-                        idCategorie: 4,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Wants', style: AppFonts.textSubTitle16),
-                  SizedBox(height: 5),
-                  Divider(color: AppColors.primary06, height: 1),
-                  SizedBox(height: 15),
-                  GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount: 3,
-
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 0,
-                    children: [
-                      CategorieItem(
-                        description: 'Lazer',
-                        icon: Icons.local_activity,
-                        idCategorie: 1,
-                      ),
-                      CategorieItem(
-                        description: 'Compras',
-                        icon: Icons.shopping_cart,
-                        idCategorie: 2,
-                      ),
-                      CategorieItem(
-                        description: 'Viagens',
-                        icon: Icons.airplanemode_active,
-                        idCategorie: 3,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Wants', style: AppFonts.textSubTitle16),
-                  SizedBox(height: 5),
-                  Divider(color: AppColors.primary06, height: 1),
-                  SizedBox(height: 15),
-                  GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount: 3,
-
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 0,
-                    children: [
-                      CategorieItem(
-                        description: 'Lazer',
-                        icon: Icons.local_activity,
-                        idCategorie: 1,
-                      ),
-                      CategorieItem(
-                        description: 'Compras',
-                        icon: Icons.shopping_cart,
-                        idCategorie: 2,
-                      ),
-                      CategorieItem(
-                        description: 'Viagens',
-                        icon: Icons.airplanemode_active,
-                        idCategorie: 3,
-                      ),
-                      CategorieItem(
-                        description: 'Presentes',
-                        icon: Icons.card_giftcard,
-                        idCategorie: 4,
+                        idCategorie: 'e3c16d8e-5d4a-4b88-8c7d-9a1e3a6c12f4',
                       ),
                     ],
                   ),
@@ -159,7 +77,7 @@ class CategorieItem extends StatelessWidget {
   });
   final String description;
   final IconData icon;
-  final int idCategorie;
+  final String idCategorie;
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +86,7 @@ class CategorieItem extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return ExpansseScreen(categoryDescription: description);
+              return ExpansseScreen(categoriaId: idCategorie);
             },
           ),
         );

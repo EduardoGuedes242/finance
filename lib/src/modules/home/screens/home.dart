@@ -1,11 +1,45 @@
+import 'package:app_finance/src/modules/home/models/movimentacao_response.dart';
 import 'package:app_finance/src/modules/home/screens/add_expanse/categorie.dart';
+import 'package:app_finance/src/modules/home/service/movimentacao_service.dart';
 import 'package:app_finance/src/modules/home/widgets/chart_home.dart';
 import 'package:app_finance/src/core/ui/theme/app_colors.dart';
 import 'package:app_finance/src/core/ui/theme/app_fonts.dart';
 import 'package:flutter/material.dart';
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  final _movimentacaoService = MovimentacaoService();
+  List<MovimentacaoResponse> listaMovimentacoes = [];
+
+  void _loadMovimentacoes() async {
+    try {
+      final resultado = await _movimentacaoService.buscarMovimentacoes();
+      if (mounted) {
+        setState(() {
+          listaMovimentacoes = resultado;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erro ao carregar movimentações: $e')),
+        );
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _loadMovimentacoes();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +89,7 @@ class ScreenHome extends StatelessWidget {
           SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: listaMovimentacoes.length,
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.all(10),
@@ -80,7 +114,7 @@ class ScreenHome extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Dados de transações',
+                            listaMovimentacoes[index].descricao,
                             style: AppFonts.textSubTitle,
                           ),
                         ],

@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:app_finance/src/core/config/api_config.dart';
 import 'package:app_finance/src/core/ui/widgets/button.dart';
 import 'package:app_finance/src/core/ui/widgets/edit.dart';
 import 'package:app_finance/src/modules/auth/models/login_request.dart';
@@ -43,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       await AuthStorage.saveToken(response.token);
+      ApiConfig.token = response.token;
       await AuthStorage.saveNome(response.nome);
       await AuthStorage.saveLogin(login);
 
