@@ -1,3 +1,4 @@
+import 'package:app_finance/src/core/config/helper.dart';
 import 'package:app_finance/src/core/ui/widgets/app_bar_back.dart';
 import 'package:app_finance/src/core/ui/widgets/button.dart';
 import 'package:app_finance/src/core/ui/widgets/edit.dart';
@@ -19,6 +20,8 @@ class _ExpansseScreenState extends State<ExpansseScreen> {
   final _descricaoController = TextEditingController();
   final _movimentacaoService = MovimentacaoService();
 
+  String _selectedTipo = 'despesa';
+
   void _registrarMovimentacao() async {
     final valor =
         _valorController.text.isEmpty
@@ -29,14 +32,16 @@ class _ExpansseScreenState extends State<ExpansseScreen> {
                       .replaceAll(',', '.'),
                 ) ??
                 0.0;
-    final data = _dataController.text;
+    final data = formatDate(_dataController.text);
     final descricao = _descricaoController.text;
     final categoria = widget.categoriaId;
+    final tipo = _selectedTipo;
+
     try {
       await _movimentacaoService.registrarMovimentcao(
         MovimentacaoRequest(
           cetegoria: categoria,
-          tipo: 'despesa',
+          tipo: tipo,
           descricao: descricao,
           valor: valor,
           data: data,
@@ -59,7 +64,40 @@ class _ExpansseScreenState extends State<ExpansseScreen> {
         children: [
           SizedBox(height: 40),
           EGAppbarBack(title: 'Registrar Movimentação'),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Row(
+              children: [
+                Expanded(
+                  child: RadioListTile<String>(
+                    value: 'despesa',
+                    groupValue: _selectedTipo,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedTipo = value!;
+                      });
+                    },
+                    title: Text('Despesa'),
+                  ),
+                ),
+                Expanded(
+                  child: RadioListTile<String>(
+                    value: 'receita',
+                    groupValue: _selectedTipo,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedTipo = value!;
+                      });
+                    },
+                    title: Text('Receita'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          SizedBox(height: 20),
           EGEdit(
             controller: _valorController,
             title: 'R\$ Valor',
@@ -67,7 +105,7 @@ class _ExpansseScreenState extends State<ExpansseScreen> {
           ),
           SizedBox(height: 30),
 
-          EGEdit(
+          EGEditData(
             controller: _dataController,
             title: 'Data',
             hintText: '14/05/2025',

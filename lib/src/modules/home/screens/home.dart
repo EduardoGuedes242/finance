@@ -37,7 +37,6 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   void initState() {
     super.initState();
-
     _loadMovimentacoes();
   }
 
