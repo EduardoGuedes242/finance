@@ -11,6 +11,20 @@ class AppFonts {
     color: AppColors.highlight001,
   );
 
+  static const TextStyle textButton2 = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.highlight001,
+  );
+
+  static const TextStyle textButtonSelect = TextStyle(
+    fontFamily: primaryFont,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primary09,
+  );
+
   static const TextStyle textTitle = TextStyle(
     fontFamily: primaryFont,
     fontSize: 20,

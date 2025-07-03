@@ -1,4 +1,4 @@
-import 'package:app_finance/src/modules/home/models/movimentacao_response.dart';
+import 'package:app_finance/src/modules/home/models/totalizador_response.dart';
 import 'package:app_finance/src/modules/home/screens/add_expanse/categorie.dart';
 import 'package:app_finance/src/modules/home/service/movimentacao_service.dart';
 import 'package:app_finance/src/modules/home/widgets/chart_home.dart';
@@ -15,20 +15,24 @@ class ScreenHome extends StatefulWidget {
 
 class _ScreenHomeState extends State<ScreenHome> {
   final _movimentacaoService = MovimentacaoService();
-  List<MovimentacaoResponse> listaMovimentacoes = [];
+  TotalizadorResponse totalizadorMovimentacoes = TotalizadorResponse(
+    receita: 0.0,
+    despesa: 0.0,
+    total: 0.0,
+  );
 
-  void _loadMovimentacoes() async {
+  void _loadTotalizadorMovimentacoes() async {
     try {
-      final resultado = await _movimentacaoService.buscarMovimentacoes();
+      final resultado = await _movimentacaoService.buscarTotalizador();
       if (mounted) {
         setState(() {
-          listaMovimentacoes = resultado;
+          totalizadorMovimentacoes = resultado;
         });
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Erro ao carregar movimentações: $e')),
+          SnackBar(content: Text('Erro ao carregar totalizador: $e')),
         );
       }
     }
@@ -37,7 +41,8 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   void initState() {
     super.initState();
-    _loadMovimentacoes();
+
+    _loadTotalizadorMovimentacoes();
   }
 
   @override
@@ -68,12 +73,14 @@ class _ScreenHomeState extends State<ScreenHome> {
             children: [
               EGChartCardHome(
                 title: 'Despesa',
-                value: 'R\$ 748,16',
+                value:
+                    'R\$ ${totalizadorMovimentacoes.despesa.toStringAsFixed(2)}',
                 color: AppColors.primary09,
               ),
               EGChartCardHome(
                 title: 'Receita',
-                value: 'R\$ 1245,17',
+                value:
+                    'R\$ ${totalizadorMovimentacoes.receita.toStringAsFixed(2)}',
                 color: AppColors.primary04,
               ),
             ],
@@ -81,49 +88,11 @@ class _ScreenHomeState extends State<ScreenHome> {
           SizedBox(height: 20),
           EGChartCardHome(
             title: 'Saldo',
-            value: 'R\$ 497,01',
+            value: 'R\$ ${totalizadorMovimentacoes.total.toStringAsFixed(2)}',
             color: AppColors.primary06,
             fullWidth: true,
           ),
           SizedBox(height: 10),
-          Expanded(
-            child: ListView.builder(
-              itemCount: listaMovimentacoes.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.all(10),
-                  height: 80,
-                  width: MediaQuery.sizeOf(context).width * 0.95,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: AppColors.primary01,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 4,
-                        offset: Offset(0, 2), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            listaMovimentacoes[index].descricao,
-                            style: AppFonts.textSubTitle,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

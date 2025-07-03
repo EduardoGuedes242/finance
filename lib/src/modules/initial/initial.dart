@@ -62,7 +62,6 @@ class _InitialPageState extends State<InitialPage> {
                 ],
               ),
             ),
-
             SizedBox(height: 20),
             EGButton(
               title: 'Continuar',

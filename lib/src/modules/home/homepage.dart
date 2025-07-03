@@ -1,6 +1,6 @@
+import 'package:app_finance/src/modules/home/screens/charts.dart';
 import 'package:app_finance/src/modules/home/screens/home.dart';
 import 'package:app_finance/src/modules/initial/widgets/screen_02.dart';
-import 'package:app_finance/src/modules/initial/widgets/screen_03.dart';
 import 'package:app_finance/src/core/ui/theme/app_colors.dart';
 import 'package:app_finance/src/core/ui/theme/app_fonts.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   int _currentIndex = 0;
 
-  final telas = [ScreenHome(), ScreenInitial02(), ScreenInitial03()];
+  final telas = [ScreenHome(), ChartsPage(), ScreenInitial02()];
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class _HomepageState extends State<Homepage> {
                             : AppColors.primary04,
                   ),
                   Text(
-                    'Graficos',
+                    'Movimentações',
                     style:
                         _currentIndex == 1
                             ? AppFonts.textIconSelect
